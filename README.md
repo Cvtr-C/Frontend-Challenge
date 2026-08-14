@@ -968,7 +968,7 @@ The main objective of the challenge is to evaluate Front-end development skills 
 
 # 👨‍💻 Author
 
-**Carlos**
+**Carlos Vitor Taleires Rodrigues**
 
 Project developed as part of the author's studies and practice in **Front-end development with React + TypeScript**.
 
