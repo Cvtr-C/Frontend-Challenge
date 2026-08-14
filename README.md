@@ -2,100 +2,100 @@
 
 # 🌤️ Frontend Challenge — LAPISCO
 
-Aplicação web desenvolvida em **React + TypeScript** como parte do **Desafio Frontend do LAPISCO**, com o objetivo de consumir APIs públicas de dados meteorológicos e apresentar informações climáticas atuais e futuras de forma interativa, responsiva e acessível.
+Web application developed with **React + TypeScript** as part of the **LAPISCO Frontend Challenge**, with the goal of consuming public weather data APIs and presenting current and future weather information in an interactive, responsive, and accessible way.
 
-A aplicação permite pesquisar cidades, identificar automaticamente a localização aproximada do usuário por IP, consultar condições meteorológicas atuais e visualizar a previsão de temperatura dos próximos 7 dias por meio de um gráfico interativo.
-
----
-
-## 📌 Sobre o projeto
-
-O projeto foi desenvolvido para atender aos requisitos propostos pelo desafio **Frontend — LAPISCO**, que solicita a criação de uma aplicação capaz de:
-
-* 🔎 Pesquisar cidades dinamicamente;
-* 📍 Identificar automaticamente a localização aproximada do usuário;
-* 🌡️ Exibir dados meteorológicos atuais;
-* 💧 Informar umidade relativa do ar;
-* 💨 Informar velocidade do vento;
-* 📊 Exibir a variação das temperaturas mínima e máxima dos próximos 7 dias;
-* 🌦️ Diferenciar visualmente as condições climáticas;
-* 🌗 Disponibilizar tema claro e escuro;
-* 📱 Adaptar a interface a diferentes tamanhos de tela;
-* ⚠️ Tratar erros de comunicação com as APIs;
-* ⚛️ Utilizar React e TypeScript;
-* 🧠 Utilizar gerenciamento de estado compartilhado com Context API;
-* 🚀 Aplicar boas práticas de desenvolvimento e organização de código.
-
-O projeto utiliza APIs públicas e não necessita de uma chave de API para funcionar.
+The application allows users to search for cities, automatically identify the user's approximate location through IP-based geolocation, check current weather conditions, and visualize temperature forecasts for the next 7 days through an interactive chart.
 
 ---
 
-# ✨ Funcionalidades
+# 📌 About the Project
 
-## 🔎 Pesquisa por cidade
+This project was developed to meet the requirements proposed by the **LAPISCO Frontend Challenge**, which requires the development of an application capable of:
 
-O usuário pode informar o nome de uma cidade para consultar suas condições meteorológicas.
+* 🔎 Dynamically searching for cities;
+* 📍 Automatically identifying the user's approximate location;
+* 🌡️ Displaying current weather data;
+* 💧 Displaying relative humidity;
+* 💨 Displaying wind speed;
+* 📊 Displaying the minimum and maximum temperature variation for the next 7 days;
+* 🌦️ Visually differentiating weather conditions;
+* 🌗 Providing light and dark themes;
+* 📱 Adapting the interface to different screen sizes;
+* ⚠️ Handling API communication errors;
+* ⚛️ Using React and TypeScript;
+* 🧠 Using Context API for shared state management;
+* 🚀 Applying good development practices and code organization.
 
-O processo realizado pela aplicação é:
+The project uses public APIs and does not require an API key to operate.
+
+---
+
+# ✨ Features
+
+## 🔎 City Search
+
+Users can enter a city name to check its weather conditions.
+
+The application follows this process:
 
 ```text
-Nome da cidade
+City name
       ↓
-API de Geocoding
+Geocoding API
       ↓
 Latitude + Longitude
       ↓
-API de previsão meteorológica
+Weather forecast API
       ↓
-Dados climáticos
+Weather data
       ↓
-Interface
+User interface
 ```
 
-A geocodificação é necessária porque a API meteorológica utiliza coordenadas geográficas para realizar a consulta.
+Geocoding is required because the weather API uses geographic coordinates to perform weather forecasts.
 
 ---
 
-## 📍 Localização automática
+## 📍 Automatic Location Detection
 
-Ao iniciar a aplicação, é realizada uma tentativa de identificação da localização aproximada do usuário utilizando **geolocalização baseada em IP**.
+When the application starts, it attempts to identify the user's approximate location using **IP-based geolocation**.
 
-O fluxo é:
+The process is:
 
 ```text
-Usuário acessa a aplicação
+User opens the application
           ↓
-Consulta de localização por IP
+IP-based location request
           ↓
-Cidade identificada
+Location identified
           ↓
-Consulta meteorológica
+Weather request
           ↓
-Previsão exibida automaticamente
+Forecast displayed automatically
 ```
 
-> **Observação:** a localização baseada em IP é aproximada e pode apresentar uma cidade diferente da localização física exata do usuário. Isso ocorre devido às limitações naturais desse método de geolocalização.
+> **Note:** IP-based geolocation is approximate and may return a city different from the user's exact physical location. This is a natural limitation of this geolocation method.
 
 ---
 
-## 🌡️ Condições meteorológicas atuais
+## 🌡️ Current Weather Conditions
 
-A aplicação apresenta informações meteorológicas atuais, incluindo:
+The application displays current weather information, including:
 
-* 🌡️ Temperatura;
-* 💧 Umidade relativa do ar;
-* 💨 Velocidade do vento;
-* 🌦️ Condição meteorológica atual.
+* 🌡️ Temperature;
+* 💧 Relative humidity;
+* 💨 Wind speed;
+* 🌦️ Current weather condition.
 
-As condições meteorológicas são interpretadas a partir do código climático retornado pela API.
+Weather conditions are interpreted based on the weather code returned by the API.
 
 ---
 
-## 🌦️ Identificação das condições climáticas
+## 🌦️ Weather Condition Identification
 
-Os códigos meteorológicos são convertidos em informações amigáveis para o usuário.
+Weather codes are converted into user-friendly information.
 
-A aplicação possui uma função responsável por transformar o código recebido em informações de apresentação:
+The application contains a function responsible for transforming the received weather code into presentation information:
 
 ```text
 Weather Code
@@ -103,28 +103,28 @@ Weather Code
 getWeatherCondition()
      ↓
 ┌─────────────────────┐
-│ Ícone               │
-│ Descrição           │
-│ Classe CSS          │
+│ Icon                │
+│ Description         │
+│ CSS Class           │
 └─────────────────────┘
 ```
 
-Isso permite que diferentes condições, como céu limpo, nebulosidade, chuva ou outras situações meteorológicas, sejam representadas visualmente de maneira diferente.
+This allows different conditions, such as clear skies, cloudy weather, rain, and other weather situations, to be visually represented in different ways.
 
-Essa lógica foi isolada em `utils/weatherCondition.ts`, evitando que regras de negócio relacionadas às condições climáticas fiquem diretamente dentro dos componentes de interface.
+This logic is isolated in `utils/weatherCondition.ts`, preventing weather-related business rules from being placed directly inside UI components.
 
 ---
 
-## 📊 Previsão dos próximos 7 dias
+## 📊 7-Day Forecast
 
-A aplicação apresenta um gráfico interativo utilizando **Recharts**.
+The application displays an interactive chart using **Recharts**.
 
-São utilizadas as temperaturas:
+The following temperatures are displayed:
 
-* 🔺 Máxima diária;
-* 🔻 Mínima diária.
+* 🔺 Daily maximum temperature;
+* 🔻 Daily minimum temperature.
 
-Os dados recebidos pela API são transformados antes de serem enviados ao componente do gráfico:
+The data received from the API is transformed before being passed to the chart component:
 
 ```text
 API
@@ -133,139 +133,139 @@ API
 ├── temperature_max[]
 └── temperature_min[]
         ↓
-Transformação dos dados
+Data transformation
         ↓
 chartData[]
         ↓
 Recharts
         ↓
-Gráfico
+Chart
 ```
 
-O objetivo é facilitar a comparação da variação de temperatura ao longo dos próximos sete dias.
+The goal is to make it easier to compare temperature variations over the next seven days.
 
-> O gráfico representa **previsão futura**, e não histórico de temperaturas.
+> The chart represents a **future forecast**, not historical temperature data.
 
 ---
 
-## 🌗 Tema claro e escuro
+## 🌗 Light and Dark Theme
 
-A aplicação possui suporte a:
+The application supports:
 
-* ☀️ Tema claro;
-* 🌙 Tema escuro.
+* ☀️ Light theme;
+* 🌙 Dark theme.
 
-O gerenciamento do tema é realizado através da **Context API**.
+Theme management is handled through the **Context API**.
 
-Além disso, a preferência selecionada pelo usuário é armazenada no `localStorage`, permitindo que o tema seja mantido entre diferentes acessos à aplicação.
+The selected preference is also stored in `localStorage`, allowing the selected theme to persist between visits.
 
-Quando não existe uma preferência previamente salva, a aplicação também considera a preferência de aparência definida no sistema operacional por meio de `prefers-color-scheme`.
+When no previously saved preference exists, the application also considers the operating system's appearance preference through `prefers-color-scheme`.
 
-Fluxo:
+Flow:
 
 ```text
-Preferência salva?
+Saved preference?
        │
    ┌───┴───┐
-  SIM     NÃO
+  YES      NO
    │        │
    ▼        ▼
 localStorage
             ↓
     prefers-color-scheme
             ↓
-       Tema inicial
+       Initial theme
 ```
 
 ---
 
-## 📱 Layout responsivo
+## 📱 Responsive Layout
 
-A interface foi desenvolvida para se adaptar a diferentes tamanhos de tela.
+The interface was designed to adapt to different screen sizes.
 
-O layout considera principalmente:
+The layout primarily considers:
 
-* 🖥️ Desktops;
-* 💻 Notebooks;
+* 🖥️ Desktop computers;
+* 💻 Laptops;
 * 📱 Smartphones;
 * 📲 Tablets.
 
-Os componentes de pesquisa, cartões meteorológicos, gráfico e controles da interface são organizados para manter a usabilidade em diferentes resoluções.
+The search component, weather cards, chart, and interface controls are organized to maintain usability across different resolutions.
 
 ---
 
-## ⚠️ Tratamento de erros
+## ⚠️ Error Handling
 
-A aplicação possui tratamento para situações em que as requisições não conseguem ser concluídas.
+The application handles situations in which requests cannot be completed.
 
-Entre os cenários considerados estão:
+Some of the handled scenarios include:
 
-* Cidade não encontrada;
-* Falha ao identificar a localização;
-* Erro na consulta meteorológica;
-* Falha na comunicação com as APIs;
-* Falta de dados esperados.
+* City not found;
+* Failure to identify the user's location;
+* Error while retrieving weather data;
+* API communication failure;
+* Missing expected data.
 
-As mensagens de erro são centralizadas em:
+Error messages are centralized in:
 
 ```text
 src/enums/error-text.enum.ts
 ```
 
-Isso evita a repetição de strings de erro em diferentes partes da aplicação e facilita futuras alterações das mensagens.
+This prevents error strings from being duplicated across different parts of the application and makes future changes easier.
 
 ---
 
-# 🛠️ Tecnologias utilizadas
+# 🛠️ Technologies Used
 
 ## Front-end
 
-| Tecnologia     | Utilização                                             |
-| -------------- | ------------------------------------------------------ |
-| **React**      | Construção da interface e componentes                  |
-| **TypeScript** | Tipagem estática e segurança durante o desenvolvimento |
-| **Vite**       | Ambiente de desenvolvimento e build                    |
-| **Recharts**   | Visualização dos dados meteorológicos                  |
-| **CSS**        | Estilização e responsividade                           |
+| Technology     | Usage                                     |
+| -------------- | ----------------------------------------- |
+| **React**      | Building the interface and components     |
+| **TypeScript** | Static typing and development-time safety |
+| **Vite**       | Development environment and build tool    |
+| **Recharts**   | Weather data visualization                |
+| **CSS**        | Styling and responsive layout             |
 
-## Ferramentas de desenvolvimento
+## Development Tools
 
-| Ferramenta              | Utilização                                |
-| ----------------------- | ----------------------------------------- |
-| **ESLint**              | Análise estática e padronização do código |
-| **TypeScript Compiler** | Verificação de tipos durante o build      |
-| **Git**                 | Controle de versão                        |
-| **GitHub**              | Hospedagem do código-fonte                |
+| Tool                    | Usage                            |
+| ----------------------- | -------------------------------- |
+| **ESLint**              | Static analysis and code quality |
+| **TypeScript Compiler** | Type checking during the build   |
+| **Git**                 | Version control                  |
+| **GitHub**              | Source code hosting              |
 
 ---
 
-# 🌐 APIs utilizadas
+# 🌐 APIs Used
 
-A aplicação utiliza APIs públicas para obter os dados necessários.
+The application uses public APIs to obtain the required data.
 
 ## 📍 IP Geolocation — ipapi
 
-Utilizada para identificar aproximadamente a cidade do usuário através do endereço IP.
+Used to approximately identify the user's city through their IP address.
 
-**Responsabilidade:**
+**Responsibility:**
 
 ```text
-IP do usuário
+User's IP address
    ↓
-Localização aproximada
+Approximate location
    ↓
-Cidade
+City
 ```
 
-A informação obtida é utilizada para realizar automaticamente a consulta meteorológica inicial.
+The retrieved information is used to automatically perform the initial weather request.
 
 ---
 
 ## 🗺️ Open-Meteo Geocoding
 
-Utilizada para converter o nome de uma cidade em coordenadas geográficas.
+Used to convert a city name into geographic coordinates.
 
-**Responsabilidade:**
+**Responsibility:**
 
 ```text
 "Fortaleza"
@@ -274,27 +274,27 @@ Latitude
 Longitude
 ```
 
-Essas coordenadas são posteriormente utilizadas pela API de previsão meteorológica.
+These coordinates are then used by the weather forecast API.
 
 ---
 
 ## 🌤️ Open-Meteo Forecast
 
-Responsável pelos dados meteorológicos.
+Responsible for providing weather data.
 
-A aplicação utiliza informações como:
+The application uses information such as:
 
-* Temperatura atual;
-* Umidade relativa;
-* Velocidade do vento;
-* Código da condição meteorológica;
-* Temperatura máxima dos próximos dias;
-* Temperatura mínima dos próximos dias.
+* Current temperature;
+* Relative humidity;
+* Wind speed;
+* Weather condition code;
+* Daily maximum temperature;
+* Daily minimum temperature.
 
-Fluxo geral:
+General flow:
 
 ```text
-Cidade
+City
   ↓
 Geocoding
   ↓
@@ -302,16 +302,16 @@ Latitude + Longitude
   ↓
 Open-Meteo Forecast
   ↓
-Dados meteorológicos
+Weather data
 ```
 
 ---
 
-# 🏗️ Arquitetura do projeto
+# 🏗️ Project Architecture
 
-O projeto foi organizado separando responsabilidades entre componentes de interface, gerenciamento de estado, hooks, serviços, tipos e funções auxiliares.
+The project is organized by separating responsibilities between UI components, state management, hooks, services, types, and utility functions.
 
-A estrutura atual do diretório `src` é:
+The current `src` directory structure is:
 
 ```text
 src/
@@ -350,142 +350,142 @@ src/
 
 ---
 
-# 🧩 Organização das responsabilidades
+# 🧩 Responsibility Breakdown
 
 ## `components/`
 
-Contém os componentes responsáveis pela interface.
+Contains components responsible for the user interface.
 
 ### `SearchBar.tsx`
 
-Responsável pela interação de pesquisa de cidades.
+Responsible for city search interaction.
 
 ### `ThemeButton.tsx`
 
-Responsável pelo controle visual de alternância entre tema claro e escuro.
+Responsible for the visual control used to switch between light and dark themes.
 
 ### `WeatherCards.tsx`
 
-Apresenta as condições meteorológicas atuais.
+Displays current weather conditions.
 
 ### `WeatherChart.tsx`
 
-Transforma os dados de previsão e os apresenta utilizando Recharts.
+Transforms forecast data and displays it using Recharts.
 
 ---
 
 ## `context/`
 
-Responsável pelo compartilhamento de estados globais da aplicação.
+Responsible for sharing global application state.
 
 ### `WeatherContext.tsx`
 
-Compartilha informações relacionadas ao clima entre diferentes componentes.
+Shares weather-related information between different components.
 
-Entre os dados disponibilizados estão:
+The context provides:
 
-* Cidade;
-* Localização;
-* Dados meteorológicos;
-* Estado de carregamento;
-* Estado de erro;
-* Funções de pesquisa;
-* Carregamento inicial da localização.
+* City;
+* Location;
+* Weather data;
+* Loading state;
+* Error state;
+* Search functions;
+* Initial location loading.
 
 ### `ThemeContext.tsx`
 
-Gerencia o tema visual da aplicação e disponibiliza a função para alternância entre os modos claro e escuro.
+Manages the application's visual theme and provides the function used to switch between light and dark modes.
 
 ---
 
 ## `hooks/`
 
-Contém hooks personalizados para encapsular lógica reutilizável.
+Contains custom hooks used to encapsulate reusable logic.
 
 ### `useWeather.ts`
 
-Centraliza a lógica relacionada à consulta meteorológica.
+Centralizes weather-related logic.
 
 ### `useTheme.ts`
 
-Facilita o acesso ao `ThemeContext`.
+Provides convenient access to `ThemeContext`.
 
-A utilização de hooks personalizados reduz a quantidade de lógica diretamente dentro dos componentes de apresentação.
+The use of custom hooks reduces the amount of logic directly contained within presentation components.
 
 ---
 
 ## `services/`
 
-Responsável pela comunicação com serviços externos.
+Responsible for communicating with external services.
 
 ### `weatherService.ts`
 
-Centraliza as requisições relacionadas à:
+Centralizes requests related to:
 
-* Geocodificação;
-* Previsão meteorológica.
+* Geocoding;
+* Weather forecasts.
 
 ### `geolocationService.ts`
 
-Responsável pela consulta de localização aproximada baseada em IP.
+Responsible for retrieving approximate location information based on the user's IP address.
 
-Essa separação evita que componentes React precisem conhecer detalhes de endpoints ou requisições HTTP.
+This separation prevents React components from needing to know API endpoint and HTTP request details.
 
 ---
 
 ## `types/`
 
-Contém as definições de tipos utilizadas pela aplicação.
+Contains the type definitions used throughout the application.
 
 ### `weather.ts`
 
-Define a estrutura dos dados meteorológicos utilizados pelo Front-end.
+Defines the structure of the weather data used by the Front-end.
 
-A utilização de TypeScript permite que os componentes trabalhem com estruturas de dados conhecidas durante o desenvolvimento.
+Using TypeScript allows the application to work with known data structures during development.
 
 ---
 
 ## `utils/`
 
-Contém funções auxiliares que não dependem diretamente de componentes React.
+Contains utility functions that do not directly depend on React components.
 
 ### `weatherCondition.ts`
 
-Converte códigos meteorológicos em informações utilizadas pela interface:
+Converts weather codes into information used by the interface:
 
 ```text
-Código
+Code
   ↓
-Ícone
-Descrição
-Classe CSS
+Icon
+Description
+CSS Class
 ```
 
 ---
 
 ## `enums/`
 
-Centraliza valores constantes relacionados a mensagens da aplicação.
+Centralizes constant values related to application messages.
 
 ### `error-text.enum.ts`
 
-Mantém as mensagens de erro utilizadas durante as requisições e operações da aplicação.
+Stores the error messages used during requests and application operations.
 
 ---
 
-# 🔄 Fluxo de dados
+# 🔄 Data Flow
 
-O fluxo principal da aplicação pode ser representado da seguinte maneira:
+The application's main data flow can be represented as follows:
 
 ```text
                     ┌──────────────────┐
-                    │      Usuário     │
+                    │      User        │
                     └────────┬─────────┘
                              │
                  ┌───────────┴───────────┐
                  │                       │
                  ▼                       ▼
-          Pesquisa cidade        Localização inicial
+          Search city            Initial location
                  │                       │
                  ▼                       ▼
         WeatherContext          Geolocation Service
@@ -513,117 +513,118 @@ O fluxo principal da aplicação pode ser representado da seguinte maneira:
         WeatherCards    WeatherChart    App / States
               │              │
               ▼              ▼
-           Dados          Gráfico
+           Weather         Chart
+            Data
 ```
 
 ---
 
-# 🧠 Gerenciamento de estado
+# 🧠 State Management
 
-O gerenciamento de estado utiliza principalmente **React Context API** e hooks.
+State management primarily uses **React Context API** and hooks.
 
-Foram definidos dois contextos independentes:
+Two independent contexts were created:
 
 ```text
 ThemeContext
      │
-     └── Tema da aplicação
+     └── Application theme
 
 WeatherContext
      │
-     ├── Cidade
-     ├── Localização
-     ├── Clima
+     ├── City
+     ├── Location
+     ├── Weather
      ├── Loading
      ├── Error
-     └── Funções relacionadas ao clima
+     └── Weather-related functions
 ```
 
-Essa divisão evita a concentração de estados não relacionados em um único contexto.
+This separation prevents unrelated application states from being concentrated in a single context.
 
-Além disso, a lógica de obtenção dos dados é separada da camada de apresentação.
+The logic responsible for retrieving data is also separated from the presentation layer.
 
 ---
 
-# ⚡ Performance e boas práticas
+# ⚡ Performance and Best Practices
 
-O projeto utiliza recursos do React para organizar e otimizar a aplicação.
+The project uses React features to organize and optimize the application.
 
 ## `useCallback`
 
-Utilizado para preservar referências de funções quando necessário, evitando recriações desnecessárias em determinados ciclos de renderização.
+Used to preserve function references when necessary, avoiding unnecessary function recreation during certain rendering cycles.
 
 ## `useMemo`
 
-Utilizado no processamento dos dados utilizados pelo gráfico, evitando que a transformação dos dados seja executada novamente sem necessidade quando suas dependências não forem alteradas.
+Used when processing the data required by the chart, preventing the data transformation from being recalculated when its dependencies have not changed.
 
-## Componentização
+## Componentization
 
-A interface foi dividida em componentes menores e independentes, permitindo que cada componente tenha uma responsabilidade específica.
+The interface is divided into smaller and independent components, allowing each component to have a specific responsibility.
 
-## Separação de responsabilidades
+## Separation of Concerns
 
-A aplicação evita concentrar:
+The application avoids concentrating:
 
-* Interface;
-* Requisições;
-* Estado;
-* Regras de negócio;
-* Tipagem;
+* UI;
+* API requests;
+* State;
+* Business logic;
+* Type definitions;
 
-em um único arquivo.
+inside a single file.
 
 ---
 
-# 🛡️ Tratamento de requisições
+# 🛡️ Request Handling
 
-As requisições são realizadas na camada de `services`, enquanto o gerenciamento dos estados de carregamento e erro fica associado ao fluxo do contexto de clima.
+Requests are handled within the `services` layer, while loading and error states are managed through the weather context flow.
 
-O fluxo pode ser resumido como:
+The general flow is:
 
 ```text
-Início da requisição
+Request starts
         ↓
 loading = true
         ↓
-requisição HTTP
+HTTP request
         │
-        ├── sucesso
+        ├── success
         │     ↓
         │   weather
         │     ↓
         │   loading = false
         │
-        └── erro
+        └── error
               ↓
-          error = mensagem
+          error = message
               ↓
           loading = false
 ```
 
-Essa abordagem mantém o tratamento da comunicação externa separado dos componentes visuais.
+This approach keeps external communication separate from visual components.
 
 ---
 
-# ♿ Interface e acessibilidade
+# ♿ UI and Accessibility
 
-A aplicação foi pensada para oferecer uma experiência de utilização simples e clara.
+The application was designed to provide a simple and clear user experience.
 
-Entre as preocupações consideradas estão:
+Considerations include:
 
-* Interface responsiva;
-* Contraste entre elementos visuais;
-* Diferenciação visual das condições climáticas;
-* Botão específico para alteração do tema;
-* Estados visuais de carregamento;
-* Mensagens amigáveis de erro;
-* Organização semântica da interface.
+* Responsive interface;
+* Visual contrast between elements;
+* Visual differentiation of weather conditions;
+* Dedicated button for theme switching;
+* Loading states;
+* User-friendly error messages;
+* Semantic organization of the interface.
 
-A acessibilidade continua sendo uma área de evolução do projeto, especialmente em relação ao aprimoramento de labels, atributos ARIA e navegação completa por teclado.
+Accessibility remains an area for future improvement, particularly regarding enhanced labels, ARIA attributes, and complete keyboard navigation.
 
 ---
 
-# 📁 Estrutura geral do projeto
+# 📁 General Project Structure
 
 ```text
 Frontend-Challenge/
@@ -653,11 +654,11 @@ Frontend-Challenge/
 
 ---
 
-# 🚀 Como executar o projeto
+# 🚀 How to Run the Project
 
-## 1. Pré-requisitos
+## 1. Prerequisites
 
-Antes de iniciar, certifique-se de possuir instalado:
+Before starting, make sure you have installed:
 
 * **Node.js**
 * **npm**
@@ -665,13 +666,13 @@ Antes de iniciar, certifique-se de possuir instalado:
 
 ---
 
-## 2. Clonar o repositório
+## 2. Clone the Repository
 
 ```bash
 git clone https://github.com/Cvtr-C/Frontend-Challenge.git
 ```
 
-Depois, entre na pasta:
+Then navigate to the project directory:
 
 ```bash
 cd Frontend-Challenge
@@ -679,43 +680,43 @@ cd Frontend-Challenge
 
 ---
 
-## 3. Instalar as dependências
+## 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-O projeto utiliza atualmente React, React DOM e Recharts como dependências principais. As ferramentas de desenvolvimento incluem TypeScript, Vite e ESLint.
+The project currently uses React, React DOM, and Recharts as its main dependencies. Development tools include TypeScript, Vite, and ESLint.
 
 ---
 
-## 4. Executar em desenvolvimento
+## 4. Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-Após iniciar o servidor, o Vite disponibilizará a aplicação localmente.
+After starting the development server, Vite will provide a local URL in the terminal.
 
-Acesse o endereço exibido no terminal.
+Open the displayed address in your browser.
 
 ---
 
-# 🏗️ Build de produção
+# 🏗️ Production Build
 
-Para verificar se o projeto pode ser compilado para produção:
+To verify that the project can be compiled for production:
 
 ```bash
 npm run build
 ```
 
-O comando executa a verificação TypeScript e posteriormente realiza o build através do Vite.
+The command performs TypeScript checking and then generates the production build using Vite.
 
 ---
 
-# 🔍 Executar o ESLint
+# 🔍 Run ESLint
 
-Para verificar problemas de lint:
+To check the project for linting issues:
 
 ```bash
 npm run lint
@@ -723,61 +724,61 @@ npm run lint
 
 ---
 
-# 👀 Visualizar o build
+# 👀 Preview the Production Build
 
-Depois de executar o build:
+After running the build:
 
 ```bash
 npm run preview
 ```
 
-O Vite iniciará um servidor local para visualizar a versão de produção.
+Vite will start a local server to preview the production version.
 
 ---
 
-# 🔐 Variáveis de ambiente
+# 🔐 Environment Variables
 
-Atualmente, o projeto **não necessita de variáveis de ambiente** para funcionar.
+Currently, the project **does not require environment variables** to run.
 
-As APIs utilizadas são públicas e não exigem uma chave privada para as consultas realizadas pela aplicação.
+The APIs used by the application are public and do not require a private API key for the implemented requests.
 
-> Caso futuramente seja adicionada uma API que utilize autenticação por chave, a configuração deverá ser adaptada para utilizar variáveis de ambiente apropriadas.
-
----
-
-# 📋 Atendimento aos requisitos do desafio
-
-| Requisito do LAPISCO                       | Implementação                                |
-| ------------------------------------------ | -------------------------------------------- |
-| 🔎 Pesquisa dinâmica por cidade            | ✅ Implementado                               |
-| 📍 Geolocalização automática               | ✅ Implementado através de localização por IP |
-| 🌡️ Temperatura atual                      | ✅ Implementado                               |
-| 💧 Umidade                                 | ✅ Implementado                               |
-| 💨 Velocidade do vento                     | ✅ Implementado                               |
-| 📊 Temperaturas mínimas e máximas          | ✅ Implementado                               |
-| 📅 Previsão dos próximos 7 dias            | ✅ Implementado                               |
-| 🌦️ Diferenciação das condições climáticas | ✅ Implementado                               |
-| 🌗 Tema claro e escuro                     | ✅ Implementado                               |
-| 📱 Layout responsivo                       | ✅ Implementado                               |
-| ⚛️ React                                   | ✅ Utilizado                                  |
-| 🔷 TypeScript                              | ✅ Utilizado                                  |
-| 🧠 Context API                             | ✅ Utilizada                                  |
-| 📈 Biblioteca de gráficos                  | ✅ Recharts                                   |
-| ⚠️ Tratamento de erros                     | ✅ Implementado                               |
-| 🧹 Organização de código                   | ✅ Separação por responsabilidades            |
-| 🚀 `useMemo` / `useCallback`               | ✅ Utilizados                                 |
+> If an API requiring authentication is added in the future, the configuration should be adapted to use appropriate environment variables.
 
 ---
 
-# 🧪 Possíveis evoluções
+# 📋 Challenge Requirements
 
-Embora o projeto atenda às principais funcionalidades propostas pelo desafio, existem melhorias que podem ser implementadas futuramente.
+| LAPISCO Requirement                   | Implementation                           |
+| ------------------------------------- | ---------------------------------------- |
+| 🔎 Dynamic city search                | ✅ Implemented                            |
+| 📍 Automatic geolocation              | ✅ Implemented using IP-based geolocation |
+| 🌡️ Current temperature               | ✅ Implemented                            |
+| 💧 Humidity                           | ✅ Implemented                            |
+| 💨 Wind speed                         | ✅ Implemented                            |
+| 📊 Minimum and maximum temperatures   | ✅ Implemented                            |
+| 📅 7-day forecast                     | ✅ Implemented                            |
+| 🌦️ Weather condition differentiation | ✅ Implemented                            |
+| 🌗 Light and dark themes              | ✅ Implemented                            |
+| 📱 Responsive layout                  | ✅ Implemented                            |
+| ⚛️ React                              | ✅ Used                                   |
+| 🔷 TypeScript                         | ✅ Used                                   |
+| 🧠 Context API                        | ✅ Used                                   |
+| 📈 Chart library                      | ✅ Recharts                               |
+| ⚠️ Error handling                     | ✅ Implemented                            |
+| 🧹 Code organization                  | ✅ Separation of responsibilities         |
+| 🚀 `useMemo` / `useCallback`          | ✅ Used                                   |
 
-### Testes automatizados
+---
 
-Adicionar testes unitários e de componentes utilizando ferramentas como Vitest e React Testing Library.
+# 🧪 Future Improvements
 
-Possíveis áreas de teste:
+Although the project implements the main features proposed by the challenge, several improvements can be made in the future.
+
+## Automated Testing
+
+Add unit and component tests using tools such as Vitest and React Testing Library.
+
+Potential testing areas:
 
 ```text
 weatherCondition
@@ -787,23 +788,29 @@ WeatherChart
 useWeather
 ```
 
-### Acessibilidade
+---
 
-Aprimorar:
+## Accessibility
 
-* Navegação por teclado;
-* Labels de formulários;
-* Atributos ARIA;
-* Anúncio de estados de carregamento;
-* Comunicação de erros para tecnologias assistivas.
+Improve:
 
-### Validação de dados externos
+* Keyboard navigation;
+* Form labels;
+* ARIA attributes;
+* Loading state announcements;
+* Error communication for assistive technologies.
 
-Adicionar validação em runtime das respostas das APIs para aumentar a segurança da aplicação em relação a alterações inesperadas nos dados recebidos.
+---
 
-### CI/CD
+## External Data Validation
 
-Adicionar uma pipeline de integração contínua para executar automaticamente:
+Add runtime validation for API responses to improve the application's resilience against unexpected changes in external data.
+
+---
+
+## CI/CD
+
+Add a continuous integration pipeline to automatically execute:
 
 ```text
 Lint
@@ -815,57 +822,57 @@ Tests
 Build
 ```
 
-a cada alteração enviada ao repositório.
+whenever changes are pushed to the repository.
 
 ---
 
-# 🎯 Objetivos de aprendizado
+# 🎯 Learning Objectives
 
-Além de atender ao desafio proposto, o desenvolvimento deste projeto teve como foco a prática dos seguintes conceitos:
+In addition to meeting the challenge requirements, this project was developed to practice the following concepts:
 
-* Componentização com React;
+* React componentization;
 * React Hooks;
 * Custom Hooks;
 * Context API;
 * TypeScript;
-* Tipagem de dados;
-* Consumo de APIs REST;
+* Data typing;
+* REST API consumption;
 * `fetch`;
-* Geocodificação;
-* Geolocalização baseada em IP;
-* Manipulação de estados assíncronos;
-* Tratamento de erros;
+* Geocoding;
+* IP-based geolocation;
+* Asynchronous state management;
+* Error handling;
 * `useMemo`;
 * `useCallback`;
-* Persistência com `localStorage`;
-* Tema claro e escuro;
-* Responsividade;
-* Visualização de dados;
-* Organização de código;
-* Separação de responsabilidades.
+* `localStorage`;
+* Light and dark themes;
+* Responsive design;
+* Data visualization;
+* Code organization;
+* Separation of concerns.
 
 ---
 
-# 🏛️ Decisões arquiteturais
+# 🏛️ Architectural Decisions
 
-Algumas decisões importantes foram tomadas durante o desenvolvimento.
+Several important architectural decisions were made during development.
 
-## Por que Context API?
+## Why Context API?
 
-A aplicação possui informações utilizadas por diferentes componentes, principalmente dados meteorológicos e configuração de tema.
+The application contains information used by multiple components, especially weather data and theme configuration.
 
-A Context API permite compartilhar esses dados sem precisar passar propriedades manualmente por vários níveis da árvore de componentes.
+Context API allows this information to be shared without manually passing props through multiple levels of the component tree.
 
 ---
 
-## Por que separar os Services?
+## Why Separate Services?
 
-A comunicação com APIs externas não precisa fazer parte dos componentes de interface.
+Communication with external APIs does not need to be part of the UI components.
 
-Por isso:
+Therefore:
 
 ```text
-Componentes
+Components
      ↓
 Context / Hooks
      ↓
@@ -874,41 +881,40 @@ Services
 APIs
 ```
 
-Essa organização facilita manutenção e permite modificar a implementação da comunicação externa sem precisar alterar toda a interface.
+This organization makes the application easier to maintain and allows the implementation of external communication to be modified without requiring changes throughout the UI.
 
 ---
 
-## Por que utilizar Custom Hooks?
+## Why Use Custom Hooks?
 
-Hooks como:
+Hooks such as:
 
 ```text
 useWeather()
 useTheme()
 ```
 
-permitem encapsular lógica e fornecer uma interface mais simples para os componentes.
+encapsulate application logic and provide a simpler interface for components.
 
-Isso deixa os componentes focados principalmente na apresentação e interação com o usuário.
-
----
-
-## Por que utilizar Recharts?
-
-O desafio exige uma representação gráfica dos dados meteorológicos.
-
-O Recharts permite transformar os dados recebidos da API em uma visualização interativa sem a necessidade de implementar manualmente toda a lógica de desenho do gráfico.
+This keeps components primarily focused on presentation and user interaction.
 
 ---
 
-# 🌎 Fluxo completo de uma pesquisa
+## Why Use Recharts?
 
-Quando o usuário pesquisa uma cidade, o fluxo completo é:
+The challenge requires a graphical representation of weather data.
+
+Recharts makes it possible to transform API data into an interactive visualization without manually implementing the entire chart rendering logic.
+
+---
+
+# 🌎 Complete Search Flow
+
+When the user searches for a city, the complete flow is:
 
 ```text
 ┌──────────────────────┐
-│ Usuário informa      │
-│ uma cidade           │
+│ User enters a city  │
 └──────────┬───────────┘
            ↓
 ┌──────────────────────┐
@@ -936,7 +942,7 @@ Quando o usuário pesquisa uma cidade, o fluxo completo é:
 └──────────┬───────────┘
            ↓
 ┌──────────────────────┐
-│ Dados meteorológicos │
+│ Weather data         │
 └──────────┬───────────┘
            ↓
 ┌──────────────────────┐
@@ -950,25 +956,24 @@ WeatherCards  WeatherChart
 
 ---
 
-# 📚 Referência do desafio
+# 📚 Challenge Reference
 
-Este projeto foi desenvolvido com base no enunciado do:
+This project was developed based on the requirements of the:
 
-**Desafio Frontend — LAPISCO**
+**LAPISCO Frontend Challenge**
 
-O objetivo principal do desafio é avaliar conhecimentos de desenvolvimento Front-end utilizando React, TypeScript, consumo de APIs, gerenciamento de estado, visualização de dados, responsividade, tratamento de erros e boas práticas de desenvolvimento.
+The main objective of the challenge is to evaluate Front-end development skills using React, TypeScript, API consumption, state management, data visualization, responsive design, error handling, and software development best practices.
 
 ---
 
-# 👨‍💻 Autor
+# 👨‍💻 Author
 
 **Carlos**
 
-Projeto desenvolvido como parte dos estudos e prática de desenvolvimento Front-end com **React + TypeScript**.
+Project developed as part of the author's studies and practice in **Front-end development with React + TypeScript**.
 
 ---
 
-# 📄 Licença
+# 📄 License
 
-Este projeto foi desenvolvido para fins educacionais e de avaliação técnica no contexto do desafio Frontend — LAPISCO.
-
+This project was developed for educational and technical evaluation purposes within the context of the **LAPISCO Frontend Challenge**.
