@@ -7,7 +7,7 @@ export async function getWeather(cityName: string): Promise<Weather> {
   );
 
   if (!responseGeo.ok) {
-    throw new Error(ErrorTextEnum.ERROR_SEARCH_CITY);
+    throw new Error(ErrorTextEnum.ERROR_FETCHING_CITY);
   }
 
   const dataGeo = await responseGeo.json();
@@ -24,7 +24,7 @@ export async function getWeather(cityName: string): Promise<Weather> {
   );
 
   if (!responseWeather.ok) {
-    throw new Error(ErrorTextEnum.ERROR_FETCH_FORECAST);
+    throw new Error(ErrorTextEnum.ERROR_FETCHING_FORECAST);
   }
 
   const dataWeather: Weather = await responseWeather.json();
