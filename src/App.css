@@ -335,8 +335,12 @@ h4 {
 }
 
 @media (max-width: 600px) {
+  body {
+    padding-top: 50px
+  }
+  
   h1 {
-    padding-top: 25px;
+    text-aling: center;
     font-size: 1.8rem;
   }
 
